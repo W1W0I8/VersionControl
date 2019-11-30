@@ -22,7 +22,6 @@ namespace UserMaintenance
             label1.Text = Resource1.FullName;            
             button1.Text = Resource1.Add;
             button2.Text = Resource1.SaveToFile;
-            button3.Text = Resource1.DeleteSelectedItem;
 
             listBox1.DataSource = users;
             listBox1.ValueMember = "ID";
@@ -37,10 +36,9 @@ namespace UserMaintenance
                 
             };
             users.Add(u);
-            textBox1.Text = ""; // a Textbox tartalmának kiürítése --> könnyebb újabb adatot "felvinni" ily módon
         }
 
-        private void button2_Click(object sender, EventArgs e) // mentés fájlba
+        private void button2_Click(object sender, EventArgs e)
         {
             SaveFileDialog sfd = new SaveFileDialog();
 
@@ -52,23 +50,6 @@ namespace UserMaintenance
                 sw.WriteLine($"{item.ID};{item.FullName}");
             }
             sw.Close();
-        }
-
-        private void button3_Click(object sender, EventArgs e) // a kiválasztott listaelem törlése
-        {
-           
-            try
-            {
-                var ID = listBox1.SelectedValue;
-                var delete = from x in users
-                             where x.ID.ToString() == ID.ToString()
-                             select x;
-                users.Remove(delete.FirstOrDefault());
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Nem sikerült törölni a kiválasztott elemet.");
-            }
         }
     }
 }
