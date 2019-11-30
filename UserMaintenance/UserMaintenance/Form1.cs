@@ -22,7 +22,7 @@ namespace UserMaintenance
             label1.Text = Resource1.FullName;            
             button1.Text = Resource1.Add;
             button2.Text = Resource1.SaveToFile;
-            button3.Text = Resource1.DeleteSelectedItem;
+            button3.Text = Resource1.DeleteSelectedItem; // újonnan került hozzáadásra (Resource1)
 
             listBox1.DataSource = users;
             listBox1.ValueMember = "ID";
